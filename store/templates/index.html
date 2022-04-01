@@ -8,21 +8,6 @@
 <div class="container-fluid mt-3">
 	<div class="row">
 
-
-		<!-- filter -->
-
-		<div class="col-lg-3 mx-auto">
-			<div class="list-group">
-
-				<a href="/" class="list-group-item list-group-item-action">All Products</a>
-
-				{% for category in categories %}
-				<a href="/?category={{category.id}}"
-					class="list-group-item list-group-item-action">{{category.name}}</a>
-				{% endfor %}
-			</div>
-		</div>
-
 		<!-- all products -->
 		<div id='products' class="col-lg-9 mx-auto">
 			<div class="row mx-auto">
@@ -31,11 +16,12 @@
 					<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
 					<div class="card-body">
 						<p class="card-title">{{product.name}}</p>
-						<p class="card-title">{{product.description}}</p>
+<!--						<p>{{product.description}}</p>-->
 						<p class="card-text"><b>{{product.price|currency}}</b></p>
 						<!-- {{product | is_in_cart:request.session.cart }} -->
 					</div>
-
+<!--	yaha xa view detail				-->
+					<button class="vd float-right btn btn-light" id="click" onClick=clickHandler(id) >View Detail</button>
 					<div class="card-footer p-0 no-gutters">
 
 						{% if product|is_in_cart:request.session.cart %}
@@ -70,8 +56,107 @@
 			</div>
 		</div>
 	</div>
-</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col about ">
+					<h4>About us</h4>
+					<p>heers is the largest online store in Nepal that offers an extensive selection of genuine liquors.
+						We provide free delivery right at your doorstep within 45 minutes, with distance coverage up to 6km outside Ring Road. Our delivery hours are from 10am to 10pm, and we are open 365 days</p>
+				</div>
 
+				<div class="footer-col">
+					<h4>Get Us</h4>
+					<div class="get-us">
+
+							<a href="https://www.facebook.com/bj.shrestha.1232/">Facebook</a>
+							<a href="https://www.instagram.com/bj_stha156/?hl=en">Instagram</a>
+
+					</div>
+
+				</div>
+
+				<div class="footer-col ">
+					<h4>Contact us</h4>
+					<div class=" contact-us">
+						<a href="tel:9866022114">Ph:9866022114</a>
+						<a href="mailto:bijayashrestha565@gmail.com">Email:bijayashrestha565</a>
+					</div>
+
+
+				</div>
+
+
+				<div class="footer-col">
+					<h6>© Asal 2022</h6>
+
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+</div>
+<style>
+	.container{
+		max-width: fit-content;
+		/*background-color:royalblue;*/
+		width: 80%;
+
+		margin: 0 auto;
+	}
+	.row{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.footer{
+		/*background-color: aqua;*/
+		padding: 70px 0;
+	}
+	.footer-col{
+		width: 20%;
+		font-size: medium;
+	}
+	a{
+		text-decoration: none;
+		color: #000;
+
+	}
+	li{
+		list-style: none;
+	}
+	.contact-us{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+	.get-us{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+	.about{
+		width: 30%;
+	}
+	.card{
+		box-shadow: 2px 3px 5px rgba(0, 0, 0 ,0.58);
+	}
+
+	.card:hover{
+		opacity: 81%;
+		/*background-color: #4d4d4d;*/
+	}
+</style>
+<script>
+
+	function clickHandler(id) {
+	let productName = id
+		console.log(productName)
+		console.log("productName")
+	}
+</script>
 
 
 {% endblock %}
